@@ -23,12 +23,15 @@ public class Q_1018 {
     for (int i = 0; i < n; i++) {
       String str = in.next();
       for (int j = 0; j < m; j++) {
-        matrix[i][j] = (  str.charAt(j) == 'W');
+        // "W" : true, "B" : false
+        matrix[i][j] = (str.charAt(j) == 'W');
       }
     }
 
+    // n x m 에서 8 x 8 체스판이 들어갈 수 있는 행과 열 횟수
     int chessRow = n - 7;
     int chessColumn = m - 7;
+    // 다시 칠해야 할 최악의 경우의 수
     int answer = 64;
 
     for (int i = 0; i < chessRow; i++) {
@@ -41,11 +44,13 @@ public class Q_1018 {
     System.out.println(answer);
   }
 
+  // 주어진 시작점에서 다시 칠해야 하는 칸 수를 구하는 메서드
   public static int solve(boolean[][] matrix, int x, int y) {
     int chessX = x + 8;
     int chessY = y + 8;
     int count = 0;
 
+    // 체스판의 시작점
     boolean curColor = matrix[x][y];
 
     for (int i = x; i < chessX; i++){
@@ -55,8 +60,10 @@ public class Q_1018 {
         }
         curColor = (!curColor);
       }
+      // 한 줄이 끝났으므로 색 변경
       curColor = (!curColor);
     }
+    // 시작점이 "W" or "B" 중에서 작은 값 반환
     return Math.min(count, 64 - count);
   }
 }
