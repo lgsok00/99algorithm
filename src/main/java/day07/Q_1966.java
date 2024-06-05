@@ -9,6 +9,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+/*
+  - 인덱스를 저장할 큐와 중요도를 저장할 배열을 선언한다.
+  - 현재 문서보다 높은 중요도를 가진 문서가 있는지 확인하고,
+  - 있을 경우 큐의 뒤로 보낸다.
+  - 없을 경우 count 를 증가시키고, 중요도를 0 으로 만들어 비교 대상에서 제외시킨다.
+ */
 public class Q_1966 {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
